@@ -5,7 +5,8 @@ import pandas as pd
 
 
 class CSVIngestor(IngestorInterface):
-
+    """ Parse csv to list of QuoteModels
+    """
     allowed_extensions = ['csv']
 
     @classmethod

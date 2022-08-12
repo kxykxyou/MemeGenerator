@@ -1,5 +1,6 @@
 import random
 import os
+import sys
 import requests
 from flask import Flask, render_template, abort, request
 import urllib
@@ -58,18 +59,16 @@ def meme_post():
     """ Create a user defined meme """
 
     # get data from post method
-    img_url = request.values['image_url']
+    img_path = request.values['image_url']
     body = request.values['body']
     author = request.values['author']
 
     # Download the target image in the ./temp directory
-    # Caution: there may be error if the image is ot in {png, jpg}
-    img_path = './temp/temp.jpg'
-    urllib.request.urlretrieve(img_url, img_path)
+    # Caution: there may be error if the image is not in {png, jpg}
     path = meme.make_meme(img_path=img_path, text=body, author=author)
 
     # remove the temporary saved image.
-    os.remove(img_path)
+    # os.remove(img_path)
 
     return render_template('meme.html', path=path)
 

@@ -4,7 +4,8 @@ from typing import List
 
 
 class TXTIngestor(IngestorInterface):
-
+    """ Parse txt to list of QuoteModels
+    """
     allowed_extensions = ['txt']
 
     @classmethod

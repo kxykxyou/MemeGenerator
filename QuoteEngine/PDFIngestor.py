@@ -7,14 +7,14 @@ import os
 
 
 class PDFIngestor(IngestorInterface):
-    """ Digest pdf file to QuoteModel objects
+    """ parse pdf to list of QuoteModels
     """
     allowed_extensions = ['pdf']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
         if not cls.can_ingest(path):
-            raise Exception('connot ingest exception')
+            raise Exception('cannot ingest exception')
 
         if not os.path.exists('./temp'):
             os.mkdir('./temp')

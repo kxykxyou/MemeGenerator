@@ -5,7 +5,8 @@ import docx
 
 
 class DOCXIngestor(IngestorInterface):
-
+    """ Parse docx to list of QuoteModels
+    """
     allowed_extensions = ['docx', 'doc']
 
     @classmethod

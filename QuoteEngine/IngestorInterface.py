@@ -12,9 +12,12 @@ class IngestorInterface(ABC):
 
     @classmethod
     def can_ingest(cls, path: str) -> bool:
+        """ to determine if the file type could be parsed
+        """
         return path.split('.')[-1] in cls.allowed_extensions
 
     @classmethod
     @abstractmethod
     def parse(cls, path: str) -> list[QuoteModel]:
+        """ to parsed file to list of QuoteModels"""
         pass

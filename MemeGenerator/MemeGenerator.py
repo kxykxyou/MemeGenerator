@@ -3,6 +3,7 @@ import sys
 import os
 import subprocess
 import random
+import urllib.request
 
 
 class MemeGenerator():
@@ -19,8 +20,8 @@ class MemeGenerator():
             os.mkdir(output_dir)
         self.output_dir = output_dir
 
-    def make_meme(self, img_path: str, text: str, author: str, font_path: str = 'fonts/Ubuntu-R.ttf', width=500) -> str:
-        """load, resize, add text to the imgage, and save to the output_dir.
+    def make_meme(self, img_path: str, text: str, author: str, font_path: str = sys.path[0]+'/fonts/Ubuntu-R.ttf', width=500):
+        """load, resize, add text to the image, and save to the output_dir.
 
         Args:
             img_path (str): Path of image
@@ -41,16 +42,18 @@ class MemeGenerator():
             raise Exception('Only jpg and png files allowed.')
 
         # load image
+        if img_path.startswith('http'):
+            temp_path = sys.path[0] + '/temp/' + img_path.split('/')[-1]
+            urllib.request.urlretrieve(img_path, temp_path)
+            img_path = temp_path
         img = Image.open(img_path)
-        # if file_type == 'png':
-        #     img = img.convert('RGB')  # png has 'RGBA' channels
 
         # resize image
         ratio = img.width/500
         height = img.height/ratio
         img = img.resize((int(width), int(height)))
 
-        # import fonts with defaulte size=20
+        # import fonts with default size=20
         fnt = ImageFont.truetype(font_path, size=20)
 
         # add text to image
@@ -61,7 +64,8 @@ class MemeGenerator():
 
         # save processed image
         output_filename = self.output_dir + '/meme_' + \
-            img_path.split('/')[-1].split('.')[0] + '.' + file_type
+            img_path.split('/')[-1]
         img.save(output_filename)
 
+        os.remove(temp_path)
         return output_filename
