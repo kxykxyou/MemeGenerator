@@ -79,7 +79,7 @@ The functions of this module are very simple and easy to use. Here provides the 
   python ./meme.py <path> <body> <author>
   ```
 
-- positional arguments:
+- optional arguments:
   `path`: Image path
   `body`: The meme sentence
   `author`: the author of the sentence
