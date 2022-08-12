@@ -38,8 +38,10 @@ The functions of this module are very simple and easy to use. Here provides the 
 
 
 ### Built With
-* <a href='https://flask.palletsprojects.com/en/2.2.x/'><img src='https://flask.palletsprojects.com/en/2.2.x/_images/flask-logo.png' style='width:42px;height:16px'></img></a> `version=2.2.2`
-* <a href='https://pillow.readthedocs.io/en/stable/'><img src='https://pillow.readthedocs.io/en/stable/_static/pillow-logo.png' style='width:42px;height:16px'></img></a> `version=9.0.1`
+* <a href='https://flask.palletsprojects.com/en/2.2.x/'><img src='https://flask.palletsprojects.com/en/2.2.x/_images/flask-logo.png' style='width:42px;height:16px'></img></a> `Flask version=2.2.2`
+* <a href='https://pillow.readthedocs.io/en/stable/'><img src='https://pillow.readthedocs.io/en/stable/_static/pillow-logo.png' style='width:42px;height:16px'></img></a> `Pillow version=9.0.1`
+* <a href='https://www.xpdfreader.com/index.html'><img src='https://www.xpdfreader.com/img/xpdf-icon.png' style='width:16px;height:16px'></img></a>`xpdf version=4.04`
+
 
 
 ### Sub-modules
@@ -101,9 +103,9 @@ The functions of this module are very simple and easy to use. Here provides the 
    ```sh
    pip install -r requirements.txt
    ```
-3. Install pdftotext
+3. Install xpdf (pdftotext)
    ```sh
-   brew install --cask pdftotext
+   brew install xpdf
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
