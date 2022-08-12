@@ -1,1 +1,1 @@
-web gunicorn meme:app --preload
+web gunicorn app:app --preload
