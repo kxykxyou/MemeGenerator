@@ -87,6 +87,7 @@ The functions of this module are very simple and easy to use. Here provides the 
 
 ### Prerequisites
 
+* `homebrew`
 * `Python 3.9.12`
 * `pip`
 
@@ -99,6 +100,10 @@ The functions of this module are very simple and easy to use. Here provides the 
 2. Install pip packages
    ```sh
    pip install -r requirements.txt
+   ```
+3. Install pdftotext
+   ```sh
+   brew install --cask pdftotext
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
