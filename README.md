@@ -76,7 +76,7 @@ The functions of this module are very simple and easy to use. Here provides the 
 #### CLI meme generator
 - just run 
   ```sh
-  python ./meme.py <path> <body> <author>
+  python ./meme.py <-path> <-body> <-author>
   ```
 
 - optional arguments:
