@@ -66,6 +66,7 @@ class MemeGenerator():
         output_filename = self.output_dir + '/meme_' + \
             img_path.split('/')[-1]
         img.save(output_filename)
-
-        os.remove(temp_path)
+        
+        if img_path.startswith('http'):
+            os.remove(temp_path)
         return output_filename
