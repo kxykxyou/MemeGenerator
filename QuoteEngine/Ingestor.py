@@ -1,16 +1,19 @@
-from .IngestorInterface import IngestorInterface
-from .QuoteModel import QuoteModel
+"""Unified interface of four file types ingestor.
+
+Ingestor includes csv, pdf, docx and txt ingestors.
+Check the format of four file types in './_data/DogQuotes'
+"""
+
 from .CSVIngestor import CSVIngestor
 from .DOCXIngestor import DOCXIngestor
 from .PDFIngestor import PDFIngestor
 from .TXTIngestor import TXTIngestor
-from typing import List
 
 
 class Ingestor:
-    """
-    Ingrester provides 4 different file type ingestor,
-        each of them can ingest data and return a list of QouteModels.
+    """Provides 4 different file type ingestor.
+
+    Each of Ingestors can ingest data and return a list of QuoteModels.
     Ingestor interface which can inherit from ingestors as below:
     1. CSVIngestor
     2. DOCXIngestor
@@ -25,12 +28,9 @@ class Ingestor:
         'txt': TXTIngestor,
     }
 
-    def __init__(self):
-        pass
-
     @classmethod
     def parse(cls, path: str):
-        """ parse the file with proper ingestor
+        """Parse the file with proper ingestor.
 
         Args:
             path (str): the path of file which needs to be parsed.

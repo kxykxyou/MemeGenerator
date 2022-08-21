@@ -1,16 +1,19 @@
-from .IngestorInterface import IngestorInterface
-from .QuoteModel import QuoteModel
+"""Parse pdf file to list of QuoteModels."""
+
 from typing import List
 import docx
+from .IngestorInterface import IngestorInterface
+from .QuoteModel import QuoteModel
 
 
 class DOCXIngestor(IngestorInterface):
-    """ Parse docx to list of QuoteModels
-    """
+    """Parse pdf file to list of QuoteModels."""
+
     allowed_extensions = ['docx', 'doc']
 
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
+        """Parse pdf file to list of QuoteModels."""
         if not cls.can_ingest(path):
             raise Exception('cannot ingest exception')
 
