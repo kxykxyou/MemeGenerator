@@ -1,3 +1,24 @@
+"""
+The meme generator command line tool.
+
+CLI Usage:
+    python ./meme.py <-path> <-body> <-author>
+
+        arguments:
+            path: image path to generate meme photo
+            body: quote sentence
+            author: quote author name
+
+FUNCTIONS:
+    generate_meme:
+        process quote and image to generate a meme image.
+
+        arguments:
+            path: image path to generate meme photo
+            body: quote sentence
+            author: quote author name
+"""
+
 import os
 import sys
 import random
@@ -6,14 +27,24 @@ from MemeGenerator.MemeGenerator import MemeGenerator
 
 
 def generate_meme(path=None, body=None, author=None):
-    """ Generate a meme given an path and a quote """
+    """
+    Generate a meme given an path and a quote.
+
+    Arguments:
+        path(str): image path, could digest png or jpg.
+        body(str): quote sentence, string.
+        author(str): quote author name.
+
+    Return:
+        processed meme image file path.
+    """
     img = None
     quote = None
 
     if path is None:
         images_dirs = sys.path[0]+"/_data/photos/"
         imgs = []
-        for root, dirs, files in os.walk(images_dirs):
+        for root, _, files in os.walk(images_dirs):
             imgs.extend([os.path.join(root, name) for name in files])
 
         img = random.choice(imgs)
@@ -26,8 +57,8 @@ def generate_meme(path=None, body=None, author=None):
                        sys.path[0]+'/_data/DogQuotes/DogQuotesPDF.pdf',
                        sys.path[0]+'/_data/DogQuotes/DogQuotesCSV.csv']
         quotes = []
-        for f in quote_files:
-            quotes.extend(Ingestor.parse(f))
+        for file in quote_files:
+            quotes.extend(Ingestor.parse(file))
 
         quote = random.choice(quotes)
     else:
@@ -38,7 +69,7 @@ def generate_meme(path=None, body=None, author=None):
     meme = MemeGenerator(sys.path[0]+'/CLIOutput')
 
     output_path = meme.make_meme(img, quote.body, quote.author)
-    print(f'New meme image is generated and save here: ')
+    print('New meme image is generated and save here: ')
 
     return output_path
 

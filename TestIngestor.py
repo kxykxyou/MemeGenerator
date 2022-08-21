@@ -1,3 +1,5 @@
+"""To test main functionality of Ingestor module."""
+
 import QuoteEngine
 from typing import List
 
@@ -14,59 +16,65 @@ path_list = [
 
 
 def test_quote_model():
+    """Test QuoteModel module."""
     model = QuoteEngine.QuoteModel('body', 'author')
     return model.body, model.author
 
 
 def test_CSVIngestor() -> List[QuoteEngine.QuoteModel]:
+    """Test CSVIngestor module."""
     quote_models = QuoteEngine.CSVIngestor().parse(csv_simple_lines_path)
     for model in quote_models:
         if type(model) != QuoteEngine.QuoteModel:
             raise Exception('model type != QuoteEngine.QuoteModel')
-    return 'CSVIngestor model type test ok'
+    return True
 
 
 def test_DOCXIngestor() -> List[QuoteEngine.QuoteModel]:
+    """Test DOCXIngestor module."""
     quote_models = QuoteEngine.DOCXIngestor().parse(docx_simple_lines_path)
     for model in quote_models:
         if type(model) != QuoteEngine.QuoteModel:
             raise Exception('model type != QuoteEngine.QuoteModel')
-    return 'DOCXIngestor model type test ok'
+    return True
 
 
 def test_PDFIngestor() -> List[QuoteEngine.QuoteModel]:
+    """Test PDFIngestor module."""
     quote_models = QuoteEngine.PDFIngestor().parse(pdf_simple_lines_path)
     for model in quote_models:
         if type(model) != QuoteEngine.QuoteModel:
             raise Exception('model type != QuoteEngine.QuoteModel')
-    return 'PDFIngestor model type test ok'
+    return True
 
 
 def test_TXTIngestor() -> List[QuoteEngine.QuoteModel]:
+    """Test TXTIngestor module."""
     quote_models = QuoteEngine.TXTIngestor().parse(txt_simple_lines_path)
     for model in quote_models:
         if type(model) != QuoteEngine.QuoteModel:
             raise Exception('model type != QuoteEngine.QuoteModel')
-    return 'TXTIngestor model type test ok'
+    return True
 
 
 def test_Ingestor() -> List[QuoteEngine.QuoteModel]:
+    """Test Ingestor module."""
     for path in path_list:
         quote_models = QuoteEngine.Ingestor.parse(path)
         for model in quote_models:
             if type(model) != QuoteEngine.QuoteModel:
                 raise Exception('model type != QuoteEngine.QuoteModel')
-    return 'Ingestor model type test ok'
+    return True
 
 
 def test_all():
-    assert test_quote_model() == ('body', 'author')
-    # assert test_CSVIngestor(
-    #     csv_simple_lines_path) == 'CSVIngestor model type test ok'
-    assert test_DOCXIngestor() == 'DOCXIngestor model type test ok'
-    assert test_PDFIngestor() == 'PDFIngestor model type test ok'
-    assert test_TXTIngestor() == 'TXTIngestor model type test ok'
-    assert test_Ingestor() == 'Ingestor model type test ok'
+    """Test all functions above."""
+    assert test_quote_model()
+    assert test_CSVIngestor()
+    assert test_DOCXIngestor()
+    assert test_PDFIngestor()
+    assert test_TXTIngestor()
+    assert test_Ingestor()
 
 
 if __name__ == '__main__':
